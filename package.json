@@ -1,0 +1,29 @@
+{
+  "name": "Altran_BackEnd_Assessment",
+  "version": "1.0.0",
+  "description": "Altran BackEnd Assessment",
+  "main": "index.js",
+  "scripts": {
+    "transpiler": "gulp",
+    "whatcher": "gulp watch",
+    "_nodemon": "nodemon ./built/index.js",
+    "start_dev": "npm run transpiler & npm run whatcher & npm run _nodemon",
+    "start_prod": "node ./built/index.js"
+  },
+  "author": "Marcelo Rusconi",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.13.4",
+    "lodash": "^4.17.4",
+    "swagger-jsdoc": "^1.9.6",
+    "swagger-ui-express": "^2.0.1"
+  },
+  "devDependencies": {
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-es2016": "^6.24.1",
+    "babel-preset-es2017": "^6.24.1",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^6.1.2",
+    "gulp-babel-minify": "^0.1.12"
+  }
+}
