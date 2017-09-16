@@ -12,4 +12,6 @@ import _ from 'lodash';
 
 module.exports = _.extend(
   require('./common'),
+  require('./security'),
+  require('./resources'),
 );

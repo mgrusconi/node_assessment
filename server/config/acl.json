@@ -1,0 +1,15 @@
+[{
+  "group": "admin",
+  "permissions": [{
+    "resource": "private",
+    "methods": "*",
+    "action": "allow"
+  }]
+},{
+  "group": "guest",
+  "permissions": [{
+    "resource": "login",
+    "methods": "*",
+    "action": "deny"
+  }]
+}]

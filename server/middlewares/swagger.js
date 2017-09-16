@@ -1,8 +1,8 @@
 'use strict';
 
 /**
- * Modulo que contiene la implementacion de Swagger
- * Module containing the Swagger implementation
+ * Modulo que contiene la implementacion de Swagger.
+ * Module containing the Swagger implementation.
  *
  * @module
  * @author Marcelo G. Rusconi <mgrusconi@gmail.com>

@@ -45,6 +45,12 @@ gulp.task('build-middlewares', () => {
         .pipe(gulp.dest('built/middlewares'));
 });
 
+gulp.task('build-config-json', () => {
+    return gulp.src('server/config/*.json')
+        //.pipe(minify())
+        .pipe(gulp.dest('built/config'));
+});
+
 gulp.task('build-config', () => {
     return gulp.src('server/config/*.js')
         .pipe(babel({
@@ -59,6 +65,7 @@ gulp.task('watch', function() {
     gulp.watch(['server/modules/**/*.js'], ['build-modules']);
     gulp.watch(['server/middlewares/*.js'], ['build-middlewares']);
     gulp.watch(['server/config/*.js'], ['build-config']);
+    gulp.watch(['server/config/*.json'], ['build-config-json']);
 });
 
-gulp.task('default', ['build-server','build-modules','build-middlewares','build-config'] );
+gulp.task('default', ['build-server','build-modules','build-middlewares','build-config','build-config-json'] );
