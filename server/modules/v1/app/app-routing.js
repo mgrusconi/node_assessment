@@ -87,26 +87,24 @@ router.route('/:name').get((...args) => controller.get(...args));
  *         description: Profile created!
  */
 router.route('/login').post((...args) => controller.login(...args));
- 
- /**
+
+/**
  * @swagger
- * /app/private:
- *   post:
+ * /app/userbyid/{id}:
+ *   get:
  *     tags:
  *       - API v1
- *     summary: Create a Profile
- *     description: Create a Profile
- *     consumes:
- *       - application/json
+ *     summary: Test implementatios
+ *     description: Test implementatios with Token
  *     produces:
  *       - application/json
  *     parameters:
- *       - name: body
- *         in: body
- *         description: Profile
+ *       - name: id
+ *         in: path
+ *         description: User ID
  *         required: true
- *         schema:
- *           $ref: '#/definitions/login'
+ *         type: string
+ *         default: 031a0925-b531-4e5a-a5f4-059be5f5d9db
  *       - name: x-key
  *         in: header
  *         description: API key
@@ -117,14 +115,16 @@ router.route('/login').post((...args) => controller.login(...args));
  *       - name: user-token
  *         in: header
  *         description: User Token JWT
- *         required: true
  *         type: string
  *         format: string
- *         default: 
+ *         default:
  *     responses:
  *       200:
- *         description: Profile created!
+ *         description: app!
+ *         schema:
+ *           $ref: ''
  */
-router.route('/private').post((...args) => controller.private(...args));
+
+router.route('/userbyid/:id').get((...args) => controller.userById(...args));
 
 module.exports = router;

@@ -23,96 +23,44 @@ describe('App Controller Login Method', ()=>{
       });
   });
 
-  it('Error - Bad API Key test', (done) => {
+  it('Error - Bad API Key Test', (done) => {
     
     request(app)
-      .get('/app/user/7b624ed3-00d5-4c1b-9ab8-c265067ef58b')
-      .set('x-key', '2fvTdG53VCp6z8Z')
-      .send(req)
-      .expect('Content-Type', /json/)
-      .expect(200)
-      .end((err, res) => {
-        should.not.exist(err);
-        res.body.should.have.property('user_token');
-      done();
-    });
-  });
-
-  it('Error - Bad User Token', (done) => {
-    
-    request(app)
-      .get('/app/user/7b624ed3-00d5-4c1b-9ab8-c265067ef58b')
-      .set({'x-key': '2fvTdG53VCp6z8Z', 'user-token': 'badtoken'})
-      .send(req)
-      .expect('Content-Type', /json/)
-      .expect(200)
-      .end((err, res) => {
-        should.not.exist(err);
-        res.body.should.have.property('user_token');
-      done();
-    });
-  });
-
-  it('Error - Bad User Token', (done) => {
-    
-    request(app)
-      .get('/app/user/7b624ed3-00d5-4c1b-9ab8-c265067ef58b')
-      .set({'x-key': '2fvTdG53VCp6z8Z', 'user-token': 'badtoken'})
-      .send(req)
-      .expect('Content-Type', /json/)
-      .expect(200)
-      .end((err, res) => {
-        should.not.exist(err);
-        res.body.should.have.property('user_token');
-      done();
-    });
-  });
-
-  it('Successful - Get User by ID Test', (done) => {
-    
-    request(app)
-      .get('/app/user/7b624ed3-00d5-4c1b-9ab8-c265067ef58b')
-      .set('x-key', '2fvTdG53VCp6z8ZbV66h')
-      .send(req)
-      .expect('Content-Type', /json/)
-      .expect(200)
-      .end((err, res) => {
-        should.not.exist(err);
-        res.body.should.have.property('user_token');
-      done();
-    });
-  });
-
-  it('Error login - User not Found test', (done) => {
-    
-    let req = {"email": "anymail@quotezart.com"};
-
-    request(app)
-      .post('/app/login')
-      .set('x-key', '2fvTdG53VCp6z8ZbV66h')
-      .send(req)
-      .expect('Content-Type', /json/)
-      .expect(404)
-      .end((err, res) => {
-        should.not.exist(err);
-        res.body.msg.should.equal('User not Found');
-      done();
-    });
-  });
-
-  it('Error login - Bad API Key test', (done) => {
-    
-    let req = {"email": "anymail@quotezart.com"};
-
-    request(app)
-      .post('/app/login')
-      .set('x-key', '2fvTdG53VCp6z8ZbV66')
-      .send(req)
+      .get('/app/userbyid/e8fd159b-57c4-4d36-9bd7-a59ca13057bb')
+      .set('x-key', 'badApiToken')
       .expect('Content-Type', /json/)
       .expect(401)
       .end((err, res) => {
         should.not.exist(err);
         res.body.message.should.equal('Invalid API Key');
+      done();
+    });
+  });
+
+  it('Error - Bad User Token', (done) => {
+    
+    request(app)
+      .get('/app/userbyid/e8fd159b-57c4-4d36-9bd7-a59ca13057bb')
+      .set({'x-key': '2fvTdG53VCp6z8ZbV66h', 'user-token': 'badUserToken'})
+      .expect('Content-Type', /json/)
+      .expect(401)
+      .end((err, res) => {
+        should.not.exist(err);
+        res.body.message.should.equal('Invalid User Token');
+      done();
+    });
+  });
+
+  it('Successful - Get User by ID Test', (done) => {   
+    request(app)
+      .get('/app/userbyid/e8fd159b-57c4-4d36-9bd7-a59ca13057bb')
+      .set({'x-key': '2fvTdG53VCp6z8ZbV66h', 'user-token': token})
+      .expect('Content-Type', /json/)
+      .expect(200)
+      .end((err, res) => {
+        should.not.exist(err);
+        res.body.should.have.property('user');
+        res.body.user.email.should.equal('manningblankenship@quotezart.com');
       done();
     });
   });

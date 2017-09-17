@@ -49,8 +49,25 @@ class AppController{
     }).catch(err => next(err));
   }
 
-  private(req, res, next) {
-        return res.status(200).json({"hello": "ok"});
+  userById(req, res, next) {
+    
+    request.getAsync({
+      url: config.resources.users, 
+      method: 'GET'
+    }).then((doc)=>{
+      let rs = JSON.parse(doc.body);
+      let authUser = rs.clients.filter((user)=>{
+        if(user.id == req.params.id){
+          return user;
+        }
+      });
+
+      if(authUser.length > 0){
+        return res.status(200).json({"user": authUser[0]});
+      }else{
+        return res.status(404).json({"msg": "User not Found"});
+      }
+    });
   }
 }
 
