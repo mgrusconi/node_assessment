@@ -17,10 +17,6 @@ const request = Promise.promisifyAll(require("request"));
 
 class AppController{
   
-  get(req, res, next) {
-        return res.status(200).json({"hello": req.params.name});
-  }
-
   login(req, res, next) {
     const key = config.security.private_key;
     const createToken = (user) => {
@@ -49,15 +45,14 @@ class AppController{
     }).catch(err => next(err));
   }
 
-  userById(req, res, next) {
-    
+  getUser(req, res, next) {
     request.getAsync({
       url: config.resources.users, 
       method: 'GET'
     }).then((doc)=>{
       let rs = JSON.parse(doc.body);
       let authUser = rs.clients.filter((user)=>{
-        if(user.id == req.params.id){
+        if(user[req.params.type] == req.params.value){
           return user;
         }
       });

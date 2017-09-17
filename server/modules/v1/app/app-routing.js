@@ -25,37 +25,6 @@ const router = new Router();
  *         description: e-mail User
  */
 
-/**
- * @swagger
- * /app/{name}:
- *   get:
- *     tags:
- *       - API v1
- *     summary: Test implementatios
- *     description: Test implementatios with Token
- *     produces:
- *       - application/json
- *     parameters:
- *       - name: name
- *         in: path
- *         description: Name
- *         required: true
- *         type: string
- *       - name: x-key
- *         in: header
- *         description: API key
- *         required: true
- *         type: string
- *         format: string
- *         default: 2fvTdG53VCp6z8ZbV66h
- *     responses:
- *       200:
- *         description: app!
- *         schema:
- *           $ref: ''
- */
-router.route('/:name').get((...args) => controller.get(...args));
-
  /**
  * @swagger
  * /app/login:
@@ -90,7 +59,7 @@ router.route('/login').post((...args) => controller.login(...args));
 
 /**
  * @swagger
- * /app/userbyid/{id}:
+ * /app/getuser/{type}/{value}:
  *   get:
  *     tags:
  *       - API v1
@@ -99,7 +68,13 @@ router.route('/login').post((...args) => controller.login(...args));
  *     produces:
  *       - application/json
  *     parameters:
- *       - name: id
+ *       - name: type
+ *         in: path
+ *         description: User ID
+ *         required: true
+ *         type: string
+ *         default: id
+ *       - name: value
  *         in: path
  *         description: User ID
  *         required: true
@@ -125,6 +100,6 @@ router.route('/login').post((...args) => controller.login(...args));
  *           $ref: ''
  */
 
-router.route('/userbyid/:id').get((...args) => controller.userById(...args));
+router.route('/getuser/:type/:value').get((...args) => controller.getUser(...args));
 
 module.exports = router;
