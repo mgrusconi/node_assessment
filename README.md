@@ -1,4 +1,4 @@
-# Altran BackEnd Assessmen
+# Altran BackEnd Assessment
 
 ## Instructions for running the project
 
@@ -181,8 +181,8 @@ Policy
 
 ## Testing
 
-* The command `npm test` run the tests with Mocha and Chai.
-* The `npm run test: watch` command runs the tests with Mocha and Chai and will watch the file changes and run the tests automatically.
+* The command `npm test` Run the test with Mocha and Chai.
+* The `npm run test: watch` Command run the test with Mocha and Chai and will watch the file changes and run the test automatically.
 
 ## Frameworks & Librerias
 
