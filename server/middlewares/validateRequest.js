@@ -11,16 +11,16 @@
 import config from '../config/';
 
 module.exports = function(req,res,next){
-	let key = (req.body && req.body.x_key) || (req.query && req.query.x_key) || req.headers['x-key'];
-	
-	if(key && key === config.security.api_key) {
-		next();
-	}else{
-		res.status(401);
-		res.json({
-			"status": 401,
-			"message": "Invalid API Key"
-		});
-		return;
-	}
+  let key = (req.body && req.body.x_key) || (req.query && req.query.x_key) || req.headers['x-key'];
+
+  if(key && key === config.security.api_key) {
+    next();
+  }else{
+    res.status(401);
+    res.json({
+      'status': 401,
+      'message': 'Invalid API Key'
+    });
+    return;
+  }
 };

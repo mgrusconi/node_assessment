@@ -1,6 +1,5 @@
 
-import { expect } from 'chai';
-import "chai/register-should"
+import 'chai/register-should';
 import request from 'supertest';
 import app from '../built/middlewares/express';
 
@@ -8,7 +7,7 @@ describe('App Controller Get User Method', ()=>{
   
   let token = null;
   before(function(done) {
-    let req = {"email": "manningblankenship@quotezart.com"};
+    let req = {'email': 'manningblankenship@quotezart.com'};
     request(app)
       .post('/app/login')
       .set('x-key', '2fvTdG53VCp6z8ZbV66h')
@@ -28,8 +27,8 @@ describe('App Controller Get User Method', ()=>{
       .end((err, res) => {
         should.not.exist(err);
         res.body.message.should.equal('Invalid API Key');
-      done();
-    });
+        done();
+      });
   });
 
   it('Error - Bad User Token', (done) => {
@@ -41,8 +40,8 @@ describe('App Controller Get User Method', ()=>{
       .end((err, res) => {
         should.not.exist(err);
         res.body.message.should.equal('Invalid User Token');
-      done();
-    });
+        done();
+      });
   });
 
   it('Error - Get User by ID not found Test', (done) => {   
@@ -54,8 +53,8 @@ describe('App Controller Get User Method', ()=>{
       .end((err, res) => {
         should.not.exist(err);
         res.body.message.should.equal('User not Found');
-      done();
-    });
+        done();
+      });
   });
 
   it('Successful - Get User by ID Test', (done) => {   
@@ -68,8 +67,8 @@ describe('App Controller Get User Method', ()=>{
         should.not.exist(err);
         res.body.should.have.property('user');
         res.body.user.email.should.equal('manningblankenship@quotezart.com');
-      done();
-    });
+        done();
+      });
   });
 
   it('Error - Get User by Name not found Test', (done) => {   
@@ -81,8 +80,8 @@ describe('App Controller Get User Method', ()=>{
       .end((err, res) => {
         should.not.exist(err);
         res.body.message.should.equal('User not Found');
-      done();
-    });
+        done();
+      });
   });
 
   it('Successful - Get User by Name Test', (done) => {   
@@ -95,8 +94,8 @@ describe('App Controller Get User Method', ()=>{
         should.not.exist(err);
         res.body.should.have.property('user');
         res.body.user.email.should.equal('lambblankenship@quotezart.com');
-      done();
-    });
+        done();
+      });
   });
   
 });

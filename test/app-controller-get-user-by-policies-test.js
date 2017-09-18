@@ -1,6 +1,5 @@
 
-import { expect } from 'chai';
-import "chai/register-should"
+import 'chai/register-should';
 import request from 'supertest';
 import app from '../built/middlewares/express';
 
@@ -8,7 +7,7 @@ describe('App Controller get user by policies Method', ()=>{
   
   let adminToken = null;
   before(function(done) {
-    let req = {"email": "manningblankenship@quotezart.com"};
+    let req = {'email': 'manningblankenship@quotezart.com'};
     request(app)
       .post('/app/login')
       .set('x-key', '2fvTdG53VCp6z8ZbV66h')
@@ -28,8 +27,8 @@ describe('App Controller get user by policies Method', ()=>{
       .end((err, res) => {
         should.not.exist(err);
         res.body.message.should.equal('Invalid API Key');
-      done();
-    });
+        done();
+      });
   });
 
   it('Error - Bad User Token', (done) => {
@@ -41,8 +40,8 @@ describe('App Controller get user by policies Method', ()=>{
       .end((err, res) => {
         should.not.exist(err);
         res.body.message.should.equal('Invalid User Token');
-      done();
-    });
+        done();
+      });
   });
 
   it('Error - Get Policies not found Test', (done) => {   
@@ -54,8 +53,8 @@ describe('App Controller get user by policies Method', ()=>{
       .end((err, res) => {
         should.not.exist(err);
         res.body.message.should.have.equal('Policy not Found');
-      done();
-    });
+        done();
+      });
   });
 
   it('Successful - Get User by Policy Test', (done) => {   
@@ -67,8 +66,8 @@ describe('App Controller get user by policies Method', ()=>{
       .end((err, res) => {
         should.not.exist(err);
         res.body.should.have.property('user');
-      done();
-    });
+        done();
+      });
   });
 
 });

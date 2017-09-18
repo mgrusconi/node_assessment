@@ -4,6 +4,6 @@ services:
   app:
     build: ./
     ports:
-      - "80:80"
+      - "3080:3080"
     volumes:
       - .:/usr/src/app

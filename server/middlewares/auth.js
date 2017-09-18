@@ -25,9 +25,9 @@ module.exports = (req,res,next) => {
       if (err) {
         res.status(401);
         res.json({
-          "status": 401,
-          "name": "JsonWebTokenError",
-          "message": "Invalid User Token"
+          'status': 401,
+          'name': 'JsonWebTokenError',
+          'message': 'Invalid User Token'
         });
         return;
       } else {

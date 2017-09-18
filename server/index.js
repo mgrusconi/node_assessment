@@ -11,7 +11,5 @@
 import app from './middlewares/express';
 
 // Constants
-const PORT = 80;
+const PORT = 3080;
 app.listen(PORT);
-
-console.log('Running on http://localhost:' + PORT);

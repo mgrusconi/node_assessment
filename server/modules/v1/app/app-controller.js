@@ -14,11 +14,10 @@
 
 
 import jwt from 'jsonwebtoken';
-import faker from 'faker';
 import Promise from 'bluebird';
 import config from '../../../config/';
 
-const request = Promise.promisifyAll(require("request"));
+const request = Promise.promisifyAll(require('request'));
 
 class AppController{
   
@@ -50,9 +49,9 @@ class AppController{
       });
 
       if(authUser.length > 0){
-        return res.status(200).json({"user_token": createToken(authUser[0])});
+        return res.status(200).json({'user_token': createToken(authUser[0])});
       }else{
-        return res.status(404).json({"message": "User not Found"});
+        return res.status(404).json({'message': 'User not Found'});
       }
     }).catch(err => next(err));
   }
@@ -77,11 +76,11 @@ class AppController{
       });
 
       if(authUser.length > 0){
-        return res.status(200).json({"user": authUser[0]});
+        return res.status(200).json({'user': authUser[0]});
       }else{
-        return res.status(404).json({"message": "User not Found"});
+        return res.status(404).json({'message': 'User not Found'});
       }
-    }).catch(err => next(err));;
+    }).catch(err => next(err));
   }
 
   /**
@@ -114,13 +113,13 @@ class AppController{
             }
           });
           if(policies.length > 0){
-            return res.status(200).json({"policies": policies});
+            return res.status(200).json({'policies': policies});
           }else{
-            return res.status(404).json({"message": "Policies not Found"});
+            return res.status(404).json({'message': 'Policies not Found'});
           }
         }).catch(err => next(err));
       }else{
-        return res.status(404).json({"message": "User not Found"});
+        return res.status(404).json({'message': 'User not Found'});
       }
     }).catch(err => next(err));   
   }
@@ -155,13 +154,13 @@ class AppController{
             }
           });
           if(users.length > 0){
-            return res.status(200).json({"user": users[0]});
+            return res.status(200).json({'user': users[0]});
           }else{
-            return res.status(404).json({"message": "User not Found"});
+            return res.status(404).json({'message': 'User not Found'});
           }
         }).catch(err => next(err));
       }else{
-        return res.status(404).json({"message": "Policy not Found"});
+        return res.status(404).json({'message': 'Policy not Found'});
       }
     }).catch(err => next(err));   
   }

@@ -1,13 +1,12 @@
 
-import { expect } from 'chai';
-import "chai/register-should"
+import 'chai/register-should';
 import request from 'supertest';
 import app from '../built/middlewares/express';
 
 describe('App Controller Login Method', ()=>{
   
   it('Successful login test', (done) => {
-    let req = {"email": "manningblankenship@quotezart.com"};
+    let req = {'email': 'manningblankenship@quotezart.com'};
     request(app)
       .post('/app/login')
       .set('x-key', '2fvTdG53VCp6z8ZbV66h')
@@ -17,12 +16,12 @@ describe('App Controller Login Method', ()=>{
       .end((err, res) => {
         should.not.exist(err);
         res.body.should.have.property('user_token');
-      done();
-    });
+        done();
+      });
   });
 
   it('Error login - User not Found test', (done) => {
-    let req = {"email": "anymail@quotezart.com"};
+    let req = {'email': 'anymail@quotezart.com'};
     request(app)
       .post('/app/login')
       .set('x-key', '2fvTdG53VCp6z8ZbV66h')
@@ -32,12 +31,12 @@ describe('App Controller Login Method', ()=>{
       .end((err, res) => {
         should.not.exist(err);
         res.body.message.should.equal('User not Found');
-      done();
-    });
+        done();
+      });
   });
 
   it('Error login - Bad API Key test', (done) => {
-    let req = {"email": "anymail@quotezart.com"};
+    let req = {'email': 'anymail@quotezart.com'};
     request(app)
       .post('/app/login')
       .set('x-key', '2fvTdG53VCp6z8ZbV66')
@@ -47,8 +46,8 @@ describe('App Controller Login Method', ()=>{
       .end((err, res) => {
         should.not.exist(err);
         res.body.message.should.equal('Invalid API Key');
-      done();
-    });
+        done();
+      });
   });
 
 });

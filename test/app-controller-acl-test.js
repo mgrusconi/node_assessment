@@ -1,6 +1,5 @@
 
-import { expect } from 'chai';
-import "chai/register-should"
+import 'chai/register-should';
 import request from 'supertest';
 import app from '../built/middlewares/express';
 
@@ -10,7 +9,7 @@ describe('Access Control List Test', ()=>{
 
   before(function(done) {
 
-    let req = {"email": "barnettblankenship@quotezart.com"};
+    let req = {'email': 'barnettblankenship@quotezart.com'};
     request(app)
       .post('/app/login')
       .set('x-key', '2fvTdG53VCp6z8ZbV66h')
@@ -30,8 +29,8 @@ describe('Access Control List Test', ()=>{
       .end((err, res) => {
         should.not.exist(err);
         res.body.message.should.equal('Unauthorized access');
-      done();
-    });
+        done();
+      });
   });
 
   it('Error - getUserByPolicy ACL Role has´t permission', (done) => {   
@@ -43,8 +42,8 @@ describe('Access Control List Test', ()=>{
       .end((err, res) => {
         should.not.exist(err);
         res.body.message.should.equal('Unauthorized access');
-      done();
-    });
+        done();
+      });
   });
 
 });
