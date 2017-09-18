@@ -4,13 +4,13 @@
   "description": "Altran BackEnd Assessment",
   "main": "index.js",
   "scripts": {
+    "clean": "rm -Rf built",
     "transpiler": "gulp",
     "whatcher": "gulp watch",
     "_nodemon": "nodemon ./built/index.js",
-    "test": "./node_modules/.bin/mocha --timeout 5000 --compilers js:babel-core/register",
-    "coverage": "./node_modules/.bin/istanbul cover --report html built/*.js",
+    "test": "./node_modules/.bin/mocha --timeout 5000 --compilers js:babel-core/register test",
     "test:watch": "./node_modules/.bin/mocha --timeout 5000 --watch --compilers js:babel-core/register",
-    "start_dev": "npm run transpiler & npm run whatcher & npm run _nodemon",
+    "start_dev": "npm run clean & npm run transpiler & npm run whatcher & npm run _nodemon",
     "start_prod": "node ./built/index.js"
   },
   "author": "Marcelo Rusconi",
@@ -38,7 +38,6 @@
     "gulp": "^3.9.1",
     "gulp-babel": "^6.1.2",
     "gulp-babel-minify": "^0.1.12",
-    "istanbul": "^0.4.5",
     "mocha": "^3.5.3",
     "supertest": "^3.0.0"
   }

@@ -1,10 +1,15 @@
 'use strict';
 
+
 /**
- * App Controller.
+ * AppController
  *
+ * NodeJS version ES6
+ * @category Assessment
+ * 
  * @module
- * @author Marcelo Rusconi <mgrusconi@gmail.com>
+ * @author   Marcelo Rusconi <mgrusconi@gmail.com>
+ *
  */
 
 
@@ -17,6 +22,13 @@ const request = Promise.promisifyAll(require("request"));
 
 class AppController{
   
+  /**
+   * Método que permite al usuario identificarse.
+   * Method that allows the user to identify.
+   *
+   * @param \ req, res, next
+   * @return \Json
+   */
   login(req, res, next) {
     const key = config.security.private_key;
     const createToken = (user) => {
@@ -45,6 +57,13 @@ class AppController{
     }).catch(err => next(err));
   }
 
+  /**
+   * Método que permite obtener un usuario segun su id o nombre.
+   * Method that allows to obtain a user according to his id or name.
+   *
+   * @param \ req, res, next
+   * @return \Json
+   */
   getUser(req, res, next) {
     request.getAsync({
       url: config.resources.users, 
@@ -62,11 +81,17 @@ class AppController{
       }else{
         return res.status(404).json({"message": "User not Found"});
       }
-    });
+    }).catch(err => next(err));;
   }
 
+  /**
+   * Método que permite obtener un listado de pólizas segun el nombre de un usuario.
+   * Method that allows to obtain a list of policies according to the name of a user.
+   *
+   * @param \ req, res, next
+   * @return \Json
+   */
   getPoliciesByUser(req, res, next) {
-    
     request.getAsync({
       url: config.resources.users, 
       method: 'GET'
@@ -93,13 +118,20 @@ class AppController{
           }else{
             return res.status(404).json({"message": "Policies not Found"});
           }
-        });
+        }).catch(err => next(err));
       }else{
         return res.status(404).json({"message": "User not Found"});
       }
-    });   
+    }).catch(err => next(err));   
   }
 
+  /**
+   * Método que permite obtener un usuario segun el id de una poliza.
+   * Method that allows to obtain a user a user according to the id of a policy.
+   *
+   * @param \ req, res, next
+   * @return \Json
+   */
   getUserByPolicy(req, res, next) {
     request.getAsync({
       url: config.resources.policies, 
@@ -127,11 +159,11 @@ class AppController{
           }else{
             return res.status(404).json({"message": "User not Found"});
           }
-        });
+        }).catch(err => next(err));
       }else{
         return res.status(404).json({"message": "Policy not Found"});
       }
-    });   
+    }).catch(err => next(err));   
   }
 }
 

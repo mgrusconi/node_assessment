@@ -13,7 +13,7 @@ const router = new Router();
 
 /**
  * @swagger
- * definition:
+ * definitions:
  *   login:
  *     type: object
  *     required:
@@ -31,8 +31,8 @@ const router = new Router();
  *   post:
  *     tags:
  *       - API v1
- *     summary: Login with User email
- *     description: Login with User email
+ *     summary: Login with User email.
+ *     description: Method that allows the user to identify.
  *     consumes:
  *       - application/json
  *     produces:
@@ -63,8 +63,8 @@ router.route('/login').post((...args) => controller.login(...args));
  *   get:
  *     tags:
  *       - API v1
- *     summary: Test implementatios
- *     description: Test implementatios with Token
+ *     summary: Get User by type (id or name)
+ *     description: Method that allows to obtain a user according to his id or name.
  *     produces:
  *       - application/json
  *     parameters:
@@ -108,8 +108,8 @@ router.route('/getuser/:type/:value').get((...args) => controller.getUser(...arg
  *   get:
  *     tags:
  *       - API v1
- *     summary: Test implementatios
- *     description: Test implementatios with Token
+ *     summary: Get policies by Username
+ *     description: Method that allows to obtain a list of policies according to the name of a user.
  *     produces:
  *       - application/json
  *     parameters:
@@ -147,8 +147,8 @@ router.route('/getpoliciesbyname/:name').get((...args) => controller.getPolicies
  *   get:
  *     tags:
  *       - API v1
- *     summary: Test implementatios
- *     description: Test implementatios with Token
+ *     summary: Get User by policy id
+ *     description: Method that allows to obtain a user a user according to the id of a policy.
  *     produces:
  *       - application/json
  *     parameters:

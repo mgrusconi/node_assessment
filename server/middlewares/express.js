@@ -36,11 +36,10 @@ function expressApp() {
   }));
   app.use(bodyParser.json());
 
-  // Authentocation
+  // Request Authentocation middleware should be above methodOverride
   app.all('/app/*', [require('./validateRequest'),require('./auth')]);
 
-  // ACL
-  
+  // Request ACL middleware should be above methodOverride
   app.use(acl.authorize.unless({
     path:['/app/login']
   }));
