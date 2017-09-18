@@ -28,11 +28,4 @@
     "methods": "*",
     "action": "deny"
   }]
-},{
-  "group": "guest",
-  "permissions": [{
-    "resource": "*",
-    "methods": ["GET"],
-    "action": "allow"
-  }]
 }]

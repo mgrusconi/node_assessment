@@ -21,8 +21,7 @@ const appAcl = __dirname + '/../config/acl.json';
 acl.config({
   filename: appAcl,
   baseUrl: config.path,
-  decodedObjectName: 'role',
-  defaultRole: 'guest'
+  decodedObjectName: 'role'
 });
 
 function expressApp() {
@@ -40,9 +39,7 @@ function expressApp() {
   app.all('/app/*', [require('./validateRequest'),require('./auth')]);
 
   // Request ACL middleware should be above methodOverride
-  app.use(acl.authorize.unless({
-    path:['/app/login']
-  }));
+  app.all('/app/*', acl.authorize.unless({path:['/app/login']}));
   
   //Routing
   app.use('/app/', routings);
