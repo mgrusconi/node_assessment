@@ -1,5 +1,5 @@
 {
-  "name": "Altran_BackEnd_Assessment",
+  "name": "altran_backend_assessment",
   "version": "1.0.0",
   "description": "Altran BackEnd Assessment",
   "main": "index.js",
@@ -7,9 +7,9 @@
     "transpiler": "gulp",
     "whatcher": "gulp watch",
     "_nodemon": "nodemon ./built/index.js",
-    "test": "./node_modules/.bin/mocha --compilers js:babel-core/register",
+    "test": "./node_modules/.bin/mocha --timeout 5000 --compilers js:babel-core/register",
     "coverage": "./node_modules/.bin/istanbul cover --report html built/*.js",
-    "test:watch": "./node_modules/.bin/mocha --watch --compilers js:babel-core/register",
+    "test:watch": "./node_modules/.bin/mocha --timeout 5000 --watch --compilers js:babel-core/register",
     "start_dev": "npm run transpiler & npm run whatcher & npm run _nodemon",
     "start_prod": "node ./built/index.js"
   },

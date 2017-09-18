@@ -102,4 +102,82 @@ router.route('/login').post((...args) => controller.login(...args));
 
 router.route('/getuser/:type/:value').get((...args) => controller.getUser(...args));
 
+/**
+ * @swagger
+ * /app/getpoliciesbyname/{name}:
+ *   get:
+ *     tags:
+ *       - API v1
+ *     summary: Test implementatios
+ *     description: Test implementatios with Token
+ *     produces:
+ *       - application/json
+ *     parameters:
+ *       - name: name
+ *         in: path
+ *         description: User ID
+ *         required: true
+ *         type: string
+ *         default: Lamb
+ *       - name: x-key
+ *         in: header
+ *         description: API key
+ *         required: true
+ *         type: string
+ *         format: string
+ *         default: 2fvTdG53VCp6z8ZbV66h
+ *       - name: user-token
+ *         in: header
+ *         description: User Token JWT
+ *         type: string
+ *         format: string
+ *         default:
+ *     responses:
+ *       200:
+ *         description: app!
+ *         schema:
+ *           $ref: ''
+ */
+
+router.route('/getpoliciesbyname/:name').get((...args) => controller.getPoliciesByUser(...args));
+
+/**
+ * @swagger
+ * /app/getuserbypolicy/{id}:
+ *   get:
+ *     tags:
+ *       - API v1
+ *     summary: Test implementatios
+ *     description: Test implementatios with Token
+ *     produces:
+ *       - application/json
+ *     parameters:
+ *       - name: id
+ *         in: path
+ *         description: Policy ID
+ *         required: true
+ *         type: string
+ *         default: 64cceef9-3a01-49ae-a23b-3761b604800b
+ *       - name: x-key
+ *         in: header
+ *         description: API key
+ *         required: true
+ *         type: string
+ *         format: string
+ *         default: 2fvTdG53VCp6z8ZbV66h
+ *       - name: user-token
+ *         in: header
+ *         description: User Token JWT
+ *         type: string
+ *         format: string
+ *         default:
+ *     responses:
+ *       200:
+ *         description: app!
+ *         schema:
+ *           $ref: ''
+ */
+
+router.route('/getuserbypolicy/:id').get((...args) => controller.getUserByPolicy(...args));
+
 module.exports = router;

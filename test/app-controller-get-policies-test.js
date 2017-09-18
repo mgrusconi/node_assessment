@@ -4,9 +4,9 @@ import "chai/register-should"
 import request from 'supertest';
 import app from '../built/middlewares/express';
 
-describe('App Controller Get User Method', ()=>{
+describe('App Controller get list polices by user Method', ()=>{
   
-  let token = null;
+  let adminToken = null;
   before(function(done) {
     let req = {"email": "manningblankenship@quotezart.com"};
     request(app)
@@ -14,14 +14,14 @@ describe('App Controller Get User Method', ()=>{
       .set('x-key', '2fvTdG53VCp6z8ZbV66h')
       .send(req)
       .end((err, res) => {
-        token = res.body.user_token;
+        adminToken = res.body.user_token;
         done();
       });
   });
 
-  it('Error - Bad API Key Test', (done) => {  
+  it('Error - Bad API Key Test', (done) => {
     request(app)
-      .get('/app/getuser/id/e8fd159b-57c4-4d36-9bd7-a59ca13057bb')
+      .get('/app/getpoliciesbyname/Whitley')
       .set('x-key', 'badApiToken')
       .expect('Content-Type', /json/)
       .expect(401)
@@ -34,7 +34,7 @@ describe('App Controller Get User Method', ()=>{
 
   it('Error - Bad User Token', (done) => {
     request(app)
-      .get('/app/getuser/id/e8fd159b-57c4-4d36-9bd7-a59ca13057bb')
+      .get('/app/getpoliciesbyname/Whitley')
       .set({'x-key': '2fvTdG53VCp6z8ZbV66h', 'user-token': 'badUserToken'})
       .expect('Content-Type', /json/)
       .expect(401)
@@ -45,58 +45,43 @@ describe('App Controller Get User Method', ()=>{
     });
   });
 
-  it('Error - Get User by ID not found Test', (done) => {   
-    request(app)
-      .get('/app/getuser/id/any-id-user')
-      .set({'x-key': '2fvTdG53VCp6z8ZbV66h', 'user-token': token})
-      .expect('Content-Type', /json/)
-      .expect(404)
-      .end((err, res) => {
-        should.not.exist(err);
-        res.body.message.should.equal('User not Found');
-      done();
-    });
-  });
-
-  it('Successful - Get User by ID Test', (done) => {   
-    request(app)
-      .get('/app/getuser/id/e8fd159b-57c4-4d36-9bd7-a59ca13057bb')
-      .set({'x-key': '2fvTdG53VCp6z8ZbV66h', 'user-token': token})
-      .expect('Content-Type', /json/)
-      .expect(200)
-      .end((err, res) => {
-        should.not.exist(err);
-        res.body.should.have.property('user');
-        res.body.user.email.should.equal('manningblankenship@quotezart.com');
-      done();
-    });
-  });
-
   it('Error - Get User by Name not found Test', (done) => {   
     request(app)
-      .get('/app/getuser/name/any-name-user')
-      .set({'x-key': '2fvTdG53VCp6z8ZbV66h', 'user-token': token})
+      .get('/app/getpoliciesbyname/anyUser')
+      .set({'x-key': '2fvTdG53VCp6z8ZbV66h', 'user-token': adminToken})
       .expect('Content-Type', /json/)
       .expect(404)
       .end((err, res) => {
         should.not.exist(err);
         res.body.message.should.equal('User not Found');
+      done();
+    });
+  });
+
+  it('Error - Get User by Name Policies not found Test', (done) => {   
+    request(app)
+      .get('/app/getpoliciesbyname/Whitley')
+      .set({'x-key': '2fvTdG53VCp6z8ZbV66h', 'user-token': adminToken})
+      .expect('Content-Type', /json/)
+      .expect(404)
+      .end((err, res) => {
+        should.not.exist(err);
+        res.body.message.should.have.equal('Policies not Found');
       done();
     });
   });
 
   it('Successful - Get User by Name Test', (done) => {   
     request(app)
-      .get('/app/getuser/name/Lamb')
-      .set({'x-key': '2fvTdG53VCp6z8ZbV66h', 'user-token': token})
+      .get('/app/getpoliciesbyname/Manning')
+      .set({'x-key': '2fvTdG53VCp6z8ZbV66h', 'user-token': adminToken})
       .expect('Content-Type', /json/)
       .expect(200)
       .end((err, res) => {
         should.not.exist(err);
-        res.body.should.have.property('user');
-        res.body.user.email.should.equal('lambblankenship@quotezart.com');
+        res.body.should.have.property('policies');
       done();
     });
   });
-  
+
 });

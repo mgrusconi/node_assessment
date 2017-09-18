@@ -1,15 +1,38 @@
 [{
   "group": "admin",
   "permissions": [{
-    "resource": "private",
+    "resource": "getuser",
+    "methods": "*",
+    "action": "allow"
+  },{
+    "resource": "getpoliciesbyname",
+    "methods": "*",
+    "action": "allow"
+  },{
+    "resource": "getuserbypolicy",
     "methods": "*",
     "action": "allow"
   }]
 },{
-  "group": "guest",
+  "group": "user",
   "permissions": [{
-    "resource": "login",
+    "resource": "getuser",
+    "methods": "*",
+    "action": "allow"
+  },{
+    "resource": "getpoliciesbyname",
     "methods": "*",
     "action": "deny"
+  },{
+    "resource": "getuserbypolicy",
+    "methods": "*",
+    "action": "deny"
+  }]
+},{
+  "group": "guest",
+  "permissions": [{
+    "resource": "*",
+    "methods": ["GET"],
+    "action": "allow"
   }]
 }]

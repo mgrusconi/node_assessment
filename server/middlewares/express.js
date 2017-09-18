@@ -40,6 +40,7 @@ function expressApp() {
   app.all('/app/*', [require('./validateRequest'),require('./auth')]);
 
   // ACL
+  
   app.use(acl.authorize.unless({
     path:['/app/login']
   }));

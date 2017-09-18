@@ -3,14 +3,11 @@ import { expect } from 'chai';
 import "chai/register-should"
 import request from 'supertest';
 import app from '../built/middlewares/express';
-//import controller from '../../../modules/v1/app/app-controller';
 
 describe('App Controller Login Method', ()=>{
   
   it('Successful login test', (done) => {
-    
     let req = {"email": "manningblankenship@quotezart.com"};
-
     request(app)
       .post('/app/login')
       .set('x-key', '2fvTdG53VCp6z8ZbV66h')
@@ -25,9 +22,7 @@ describe('App Controller Login Method', ()=>{
   });
 
   it('Error login - User not Found test', (done) => {
-    
     let req = {"email": "anymail@quotezart.com"};
-
     request(app)
       .post('/app/login')
       .set('x-key', '2fvTdG53VCp6z8ZbV66h')
@@ -36,15 +31,13 @@ describe('App Controller Login Method', ()=>{
       .expect(404)
       .end((err, res) => {
         should.not.exist(err);
-        res.body.msg.should.equal('User not Found');
+        res.body.message.should.equal('User not Found');
       done();
     });
   });
 
   it('Error login - Bad API Key test', (done) => {
-    
     let req = {"email": "anymail@quotezart.com"};
-
     request(app)
       .post('/app/login')
       .set('x-key', '2fvTdG53VCp6z8ZbV66')
