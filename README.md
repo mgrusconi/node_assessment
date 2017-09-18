@@ -24,7 +24,7 @@ The environment can be run in two different ways, with Docker or install necessa
 ### Requirements 
 
 - [Git](https://git-scm.com/)
-- [Node.js and npm](nodejs.org) Node >= 6.x.x, npm >= 2.x.x
+- [Node.js and npm](nodejs.org) Node >= 6.x.x, npm >= 3.x.x
 - [Gulp](http://gulpjs.com/) (`npm install --global gulp`)
 - [Nodemon](https://nodemon.io/) (`npm install --global nodemon`)
 
@@ -187,42 +187,42 @@ Policy
 ## Frameworks & Librerias
 
 ### Framework
-"express": "^4.13.4"
+- "express": "^4.13.4"
 
 ### Task Manager
-"gulp": "^3.9.1"
+- "gulp": "^3.9.1"
 
 ### Promises
-"bluebird": "^3.5.0"
+- "bluebird": "^3.5.0"
 
 ### Utils
-"body-parser": "^1.18.1"
-"lodash": "^4.17.4"
-"gulp-babel-minify": "^0.1.12"
-"request": "^2.81.0"
+- "body-parser": "^1.18.1"
+- "lodash": "^4.17.4"
+- "gulp-babel-minify": "^0.1.12"
+- "request": "^2.81.0"
 
 ### Security
-"express-acl": "^1.0.3"
-"jsonwebtoken": "^8.0.1"
+- "express-acl": "^1.0.3"
+- "jsonwebtoken": "^8.0.1"
 
 ### Documentation
-"swagger-jsdoc": "^1.9.6"
-"swagger-ui-express": "^2.0.1"
+- "swagger-jsdoc": "^1.9.6"
+- "swagger-ui-express": "^2.0.1"
 
 ### Transpilers
-"babel": "^6.23.0"
-"babel-cli": "^6.26.0"
-"babel-core": "^6.26.0"
-"babel-preset-es2015": "^6.24.1"
-"babel-preset-es2016": "^6.24.1"
-"babel-preset-es2017": "^6.24.1"
-"gulp-babel": "^6.1.2",
+- "babel": "^6.23.0"
+- "babel-cli": "^6.26.0"
+- "babel-core": "^6.26.0"
+- "babel-preset-es2015": "^6.24.1"
+- "babel-preset-es2016": "^6.24.1"
+- "babel-preset-es2017": "^6.24.1"
+- "gulp-babel": "^6.1.2",
 
 ###Test
-"chai": "^4.1.2"
-"mocha": "^3.5.3"
-"supertest": "^3.0.0"
+- "chai": "^4.1.2"
+- "mocha": "^3.5.3"
+- "supertest": "^3.0.0"
 
 ###Hints
-"gulp-eslint": "^4.0.0"
-"babel-eslint": "^8.0.0"
+- "gulp-eslint": "^4.0.0"
+- "babel-eslint": "^8.0.0"
