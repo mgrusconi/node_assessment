@@ -54,7 +54,7 @@ gulp.task('build-config', () => {
     .pipe(gulp.dest('built/config'));
 });
 
-gulp.task('eslint', function () {
+gulp.task('eslint', () => {
   return gulp.src([
     '**/*.js',
     '!server/config.js',
@@ -65,7 +65,7 @@ gulp.task('eslint', function () {
     .pipe(eslint.format());
 });
 
-gulp.task('watch', function() {
+gulp.task('watch', () => {
   gulp.watch(['server/server.js'], ['build-server','eslint']);
   gulp.watch(['server/modules/**/*.js'], ['build-modules','eslint']);
   gulp.watch(['server/middlewares/*.js'], ['build-middlewares','eslint']);

@@ -7,11 +7,11 @@
     "clean": "rm -Rf built",
     "transpiler": "gulp",
     "whatcher": "gulp watch",
-    "_nodemon": "nodemon ./built/index.js",
+    "server": "nodemon ./built/index.js",
     "test": "./node_modules/.bin/mocha --timeout 5000 --compilers js:babel-core/register test",
     "test:watch": "./node_modules/.bin/mocha --timeout 5000 --watch --compilers js:babel-core/register",
-    "start_dev": "npm run transpiler & npm run whatcher & npm run _nodemon",
-    "start_prod": "node ./built/index.js"
+    "start_dev": "npm run clean && npm run transpiler && npm run whatcher && npm run server",
+    "start_prod": "npm run clean && npm run transpiler && node ./built/index.js"
   },
   "author": "Marcelo Rusconi",
   "license": "MIT",

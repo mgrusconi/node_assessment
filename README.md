@@ -182,9 +182,9 @@ Policy
 ## Testing
 
 * The command `npm test` Run the test with Mocha and Chai.
-* The `npm run test: watch` Command run the test with Mocha and Chai and will watch the file changes and run the test automatically.
+* The `npm run test:watch` Command run the test with Mocha and Chai and will watch the file changes and run the test automatically.
 
-## Frameworks & Librerias
+## Frameworks & Libraries
 
 ### Framework
 - "express": "^4.13.4"
@@ -195,7 +195,7 @@ Policy
 ### Promises
 - "bluebird": "^3.5.0"
 
-### Utils
+### Useful
 - "body-parser": "^1.18.1"
 - "lodash": "^4.17.4"
 - "gulp-babel-minify": "^0.1.12"
